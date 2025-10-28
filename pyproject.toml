@@ -1,0 +1,17 @@
+[project]
+name = "archeo"
+version = "0.1.0"
+requires-python = "==3.13.*"
+dependencies = [
+    "affine>=2.4.0",
+    "boto3>=1.40.60",
+    "numpy>=2.2.6",
+    "opencv-python",
+    "pillow>=12.0.0",
+    "pyproj>=3.7.2",
+    "rasterio>=1.4.3",
+    "shapely>=2.1.2",
+    "torch>=2.9.0",
+    "ultralytics>=8.3.221",
+    "urllib3>=2.5.0",
+]
