@@ -49,3 +49,23 @@ python3 metrics/compute_metrics_qual.py --predictions baseline_solution/result.g
 # Вычислить метрику для финала
 python3 metrics/compute_metrics.py --predictions baseline_solution/result.geojson --ground-truth metrics/ground_truth.geojson
 ```
+
+6. Generate train-test-split:
+```bash
+python3 splits/generate.py
+# Результат: splits/train_sites.txt, splits/val_sites.txt
+```
+
+7. Воспроизвести baseline модель:
+```bash
+# Конвертировать датасет в формат yolo ultralytics
+# Изображения нарезаются на квадраты 1024x1024 с 30% перекрытием,
+# черные квадраты отбрасываются,
+# квадраты без разметки (фоновые) остаются с вероятностью 10%,
+# всё конвертируется в webp
+# при дефолтных настройках сжатия 180 ГБ -> 850 МБ
+python3 baseline_recreation/prepare_dataset.py
+
+# Обучить модель
+python3 baseline_recreation/train.py --batch 8 --imgsz 768
+```
