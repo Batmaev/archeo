@@ -879,6 +879,8 @@ def predict(
     log_section("📊 Post-Processing Statistics")
     log_metric("Raw Features", len(collected))
 
+    dedup_elapsed = 0.0
+    merge_elapsed = 0.0
     dedup_start = time.time()
     if collected:
         unique = deduplicate_polygons(collected)
